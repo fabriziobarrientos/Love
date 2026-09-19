@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Una invitación para ti ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; display:flex; align-items:center;
+  justify-content:center; overflow:hidden;
+  font-family:Georgia,serif;
+  background:linear-gradient(135deg,#250010,#8b1238,#e94f7c);
+  color:white;
+}
+.card{
+  width:min(90%,520px); padding:45px 30px; text-align:center;
+  background:rgba(255,255,255,.12); backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.25); border-radius:28px;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  animation:appear 1s ease;
+}
+h1{font-size:42px;margin:0 0 18px}
+h2{font-size:25px;font-weight:normal}
+p{font-family:Arial,sans-serif;line-height:1.7;font-size:17px}
+button{
+  border:0;border-radius:30px;padding:14px 25px;margin:10px;
+  font-size:16px;cursor:pointer;transition:.25s;
+}
+.yes{background:#fff;color:#b51d4e}
+.more{background:transparent;color:white;border:1px solid white}
+button:hover{transform:scale(1.07)}
+.hidden{display:none}
+.heart{
+  position:absolute;color:#ffb3c7;font-size:22px;
+  animation:float 6s linear infinite;opacity:.7;
+}
+@keyframes appear{from{opacity:0;transform:translateY(25px)}
+to{opacity:1;transform:translateY(0)}}
+@keyframes float{
+  from{transform:translateY(100vh) rotate(0);opacity:0}
+  20%{opacity:.8} to{transform:translateY(-10vh) rotate(360deg);opacity:0}
+}
+</style>
+</head>
+<body>
+
+<div class="card" id="page1">
+  <div style="font-size:55px">❤️</div>
+  <h1>Una invitación para ti</h1>
+  <h2>Tengo algo que proponerte…</h2>
+  <p>
+    Quiero invitarte a una noche especial, solo tú y yo.
+    Sin prisas, con buena música, privacidad y esa química
+    que existe entre nosotros. ✨
+  </p>
+  <button class="yes" onclick="showPage()">Sí, quiero saber más ❤️</button>
+  <button class="more" onclick="showPage()">Cuéntame… ✨</button>
+</div>
+
+<div class="card hidden" id="page2">
+  <div style="font-size:55px">🌹</div>
+  <h1>Entonces…</h1>
+  <p>
+    Me gustaría que compartiéramos un momento íntimo,
+    romántico y especial, dejándonos llevar por la química,
+    siempre que los dos queramos.
+  </p>
+  <h2>¿Aceptas mi invitación? 🥰</h2>
+  <button class="yes" onclick="accepted()">Sí ❤️</button>
+  <button class="more" onclick="accepted()">Me encanta la idea 😉</button>
+</div>
+
+<div class="card hidden" id="page3">
+  <div style="font-size:65px">💋</div>
+  <h1>Entonces tenemos un plan ❤️</h1>
+  <p>
+    Solo falta elegir el momento perfecto para nosotros.
+    Lo demás… lo dejamos para cuando estemos juntos. ✨
+  </p>
+  <h2>Nos vemos pronto. 🌹</h2>
+</div>
+
+<script>
+function showPage(){
+  document.getElementById('page1').classList.add('hidden');
+  document.getElementById('page2').classList.remove('hidden');
+}
+function accepted(){
+  document.getElementById('page2').classList.add('hidden');
+  document.getElementById('page3').classList.remove('hidden');
+}
+for(let i=0;i<18;i++){
+  const h=document.createElement('div');
+  h.className='heart';
+  h.textContent='♥';
+  h.style.left=Math.random()*100+'vw';
+  h.style.animationDelay=Math.random()*6+'s';
+  h.style.fontSize=(14+Math.random()*25)+'px';
+  document.body.appendChild(h);
+}
+</script>
+</body>
+</html>
